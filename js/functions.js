@@ -9,9 +9,6 @@ const checkLine = function (usedLine, maxLength) {
 };
 
 //Проверка на палиндром
-
-
-// eslint-disable-next-line no-unused-vars
 const checkPalyndrome = function (line) {
   const noBreakLine = line.replaceAll(' ', '');
   const newLine = noBreakLine.toUpperCase();
@@ -27,3 +24,29 @@ const checkPalyndrome = function (line) {
     return false; //Вывод сообщения
   }
 };
+checkPalyndrome('Молебен о коне белом');
+
+const searchFigure = function (figureLine) {
+  let newFigureLine = '';
+  if (typeof figureLine === 'number') {
+    const trueFigureline = figureLine.toString();
+    for (let i = 0; i < trueFigureline.length;i++) {
+      const parsingTrueFigure = parseInt(trueFigureline[i],10);
+      if (!Number.isNaN(parsingTrueFigure)) {
+        newFigureLine += trueFigureline[i];
+      }
+    }
+  }
+  for (let i = 0; i < figureLine.length;i++) {
+    const parsingFigure = parseInt(figureLine[i],10);
+    if (!Number.isNaN(parsingFigure)) {
+      newFigureLine += figureLine[i];
+    }
+  }
+  if (newFigureLine.length === 0) {
+    return NaN;
+  }
+  return Number(newFigureLine);
+};
+
+searchFigure(555);
