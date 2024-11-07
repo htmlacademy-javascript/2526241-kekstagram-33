@@ -1,9 +1,9 @@
 import { getRandomArrayElement } from './util';
 import { getRandomInteger } from './util';
-import { createId } from './create-id';
-import { createUrlId } from './create-id';
-import { createRandomAvatarId } from './comment-avatar-id';
-import { createRandomCommentId } from './comment-avatar-id';
+import { createId } from './create-id.js/index.js';
+import { createUrlId } from './create-id.js/index.js';
+import { createRandomAvatarId } from './comment-avatar-id.js';
+import { createRandomCommentId } from './comment-avatar-id.js';
 import { NAME } from './name';
 import { MESSAGE } from './message';
 
