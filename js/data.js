@@ -1,7 +1,7 @@
 import { getRandomArrayElement } from './util';
 import { getRandomInteger } from './util';
-import { createId } from './create-id.js/index.js';
-import { createUrlId } from './create-id.js/index.js';
+import { createId } from './create-id.js';
+import { createUrlId } from './create-id.js';
 import { createRandomAvatarId } from './comment-avatar-id.js';
 import { createRandomCommentId } from './comment-avatar-id.js';
 import { NAME } from './name';
