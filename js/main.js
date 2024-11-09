@@ -1,5 +1,4 @@
 import './data.js';
 import './functions.js';
-import { profilePhotosMassive} from './data.js';
+import './creating-miniature.js';
 
-profilePhotosMassive();

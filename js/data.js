@@ -7,19 +7,23 @@ import { createRandomCommentId } from './comment-avatar-id.js';
 import { NAME } from './name';
 import { MESSAGE } from './message';
 
-const PROFILE_PHOTO = function () {
-  return {id:createId() ,
-    url: `photos/${createUrlId()}.jpg` ,
-    description:'Прекрасный летний вечер',
-    likes:getRandomInteger(15,200),
-    comments:{id:createRandomCommentId(),
-      avatar:`img/avatar- ${createRandomAvatarId()}.svg`,
-      message:getRandomArrayElement(MESSAGE),
-      name:getRandomArrayElement(NAME)
-    }
-  };
-};
+/*const createComment = () => ({id:createRandomCommentId(),
+  avatar:`img/avatar- ${createRandomAvatarId()}.svg`,
+  message:getRandomArrayElement(MESSAGE),
+  name:getRandomArrayElement(NAME)
+});*/
 
-const profilePhotosMassive = () => Array.from({length:6},PROFILE_PHOTO);
+const PROFILE_PHOTO = () => ({id:createId() ,
+  url: `photos/${createUrlId()}.jpg` ,
+  description:'Прекрасный летний вечер',
+  likes:getRandomInteger(15,200),
+  comments:{id:createRandomCommentId(),
+    avatar:`img/avatar- ${createRandomAvatarId()}.svg`,
+    message:getRandomArrayElement(MESSAGE),
+    name:getRandomArrayElement(NAME)
+  }
+});
+
+const profilePhotosMassive = () => Array.from({length:4},PROFILE_PHOTO);
 
 export {profilePhotosMassive};
