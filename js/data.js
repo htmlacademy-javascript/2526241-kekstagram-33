@@ -21,6 +21,8 @@ const PROFILE_PHOTO = () => ({id:createId() ,
   comments:Array.from({length:getRandomInteger(5,60)},createComment)
 });
 
+console.log(PROFILE_PHOTO);
+
 const profilePhotosMassive = () => Array.from({length:4},PROFILE_PHOTO);
 
 export {profilePhotosMassive};
