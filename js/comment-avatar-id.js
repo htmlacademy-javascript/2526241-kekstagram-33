@@ -18,7 +18,5 @@ function createCommentAndAvatarId (a, b) {
 const createRandomCommentId = createCommentAndAvatarId(1,1000);
 const createRandomAvatarId = createCommentAndAvatarId(1,6);
 
-console.log(createRandomAvatarId);
-
 export {createRandomAvatarId};
 export {createRandomCommentId};

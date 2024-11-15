@@ -14,16 +14,14 @@ const createComment = () => ({id:createRandomCommentId(),
 });
 
 
-const PROFILE_PHOTO = () => ({id:createId() ,
+const profilePhoto = () => ({id:createId() ,
   url: `photos/${createUrlId()}.jpg` ,
   description:'Прекрасный летний вечер',
   likes:getRandomInteger(15,200),
   comments:Array.from({length:getRandomInteger(5,60)},createComment)
 });
 
-console.log(PROFILE_PHOTO);
-
-const profilePhotosMassive = () => Array.from({length:4},PROFILE_PHOTO);
+const profilePhotosMassive = () => Array.from({length:4},profilePhoto);
 
 export {profilePhotosMassive};
 export {createComment};
