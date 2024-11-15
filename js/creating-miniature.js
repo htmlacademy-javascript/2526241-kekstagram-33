@@ -3,7 +3,6 @@ import { profilePhotosMassive } from './data.js'; //Импорт функции 
 const pictureContainer = document.querySelector('.pictures'); // Поиск контейнера для изображений пользователей
 const similarPictureTemplate = document.querySelector('#picture').content.querySelector('.picture'); //Поиск шаблона для копирования
 const similarPictures = profilePhotosMassive(); // Заведение переменной для получения массива из функции
-
 const similarPictureFragment = document.createDocumentFragment(); //заведение контейнера для вставки картинок
 
 similarPictures.forEach(({url,description,likes,comments}) => {
@@ -14,5 +13,6 @@ similarPictures.forEach(({url,description,likes,comments}) => {
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
   similarPictureFragment.appendChild(pictureElement); //Проход по массиву и добавление данных из profilePhotoMassive
 });
+
 
 pictureContainer.appendChild(similarPictureFragment);
