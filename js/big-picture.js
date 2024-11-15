@@ -1,5 +1,3 @@
-import { getSocialComment } from './create-social-comment';
-import { createComment } from './data';
 const miniature = document.querySelectorAll('.picture');
 const bigPicture = document.querySelector('.big-picture');
 const buttonClose = document.querySelector('.big-picture__cancel');
