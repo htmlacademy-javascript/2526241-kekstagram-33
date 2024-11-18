@@ -1,16 +1,16 @@
-const commentsList = document.querySelector('.social__comments');
-const commentItem = commentsList.querySelector('.social__comment');
+const createSocialComment = ({avatar, name, message}) => {
+  const comment = document.createElement('li');
+  comment.innerHTML = '<img class="social__picture" src="" alt="" width="35" height="35"><p class="social__text"></p>';
+  comment.classList.add('social__comment');
 
-const getSocialComment = (comment) => {
-  const commentsCloned = commentItem.cloneNode(true);
-  const commentAvatar = commentsCloned.querySelector('.social__picture');
-  commentAvatar.src = comment.avatar;
-  commentAvatar.alt = comment.name;
-  commentsCloned.querySelector('.social__text').textContent = comment.message;
-  commentsList.appendChild(commentsCloned);
+  comment.querySelector('.social__picture').src = avatar;
+  comment.querySelector('.social__picture').alt = name;
+  comment.querySelector('.social__text').textContent = message;
+
+  return comment;
 };
 
 
-export {getSocialComment};
+export {createSocialComment};
 
 
