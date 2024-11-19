@@ -20,7 +20,7 @@ const profilePhoto = () => ({id:createId() ,
   comments:Array.from({length:getRandomInteger(5,60)},createComment)
 });
 
-const profilePhotosMassive = () => Array.from({length:4},profilePhoto);
+const profilePhotosMassive = () => Array.from({length:25},profilePhoto);
 const similarPictures = profilePhotosMassive(); //нейминг
 
 export {profilePhotosMassive};

@@ -8,6 +8,7 @@ const buttonClose = document.querySelector('.big-picture__cancel');
 const bigPictureImg = bigPicture.querySelector('img');
 const picturesLikesCount = document.querySelector('.likes-count');
 const commentsCount = document.querySelector('.social__comment-total-count');
+const shownCount = document.querySelector('.social__comment-shown-count');
 const socialDesc = document.querySelector('.social__caption');
 const socialCommentsList = document.querySelector('.social__comments');
 const commentLoaderButton = document.querySelector('.comments-loader');
@@ -21,12 +22,7 @@ const clearComments = () => {
 };
 
 const renderComments = (commentsList) => {
-  commentLoaderButton.addEventListener('click',()=>{
-    renderComments(commentsList);
-  });
-
   clearComments();
-
   commentLoaded = commentsList.slice(0,commentsCounter);
 
   const commentListFragment = document.createDocumentFragment();
@@ -35,8 +31,14 @@ const renderComments = (commentsList) => {
   });
 
   socialCommentsList.appendChild(commentListFragment);
-  commentsCounter += COMMENTS_STEP;
+  shownCount.textContent = commentLoaded.length;
 };
+
+const onLoadMoreComments = (commentsList) => {
+  commentsCounter += COMMENTS_STEP;
+  renderComments(commentsList);
+};
+
 
 miniature.forEach((element) => { // задание цикла для списка миниатюр
   element.addEventListener('click',(evt) =>{ //добавление события на контретный элемент в списке
@@ -51,12 +53,13 @@ miniature.forEach((element) => { // задание цикла для списк�
     const currentComments = evt.currentTarget.querySelector('.picture__comments'); //наложение evt.target на класс с комментами
     commentsCount.textContent = currentComments.textContent;
     socialDesc.textContent = currentPhoto.alt; // задание описания из массива similarPictures
+    commentLoaderButton.onclick = () => onLoadMoreComments(currentItem.comments);
   });
 });
 
-buttonClose.addEventListener('click',() => { //Добавить закрытие по нажатию Esc
+buttonClose.addEventListener('click', () => {
   bigPicture.classList.add('hidden');
-  commentsCounter = [];
   commentsCounter = COMMENTS_STEP;
+  commentLoaderButton.classList.remove('hidden');
 });
 
