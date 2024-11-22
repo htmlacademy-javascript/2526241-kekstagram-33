@@ -32,6 +32,10 @@ const renderComments = (commentsList) => {
 
   socialCommentsList.appendChild(commentListFragment);
   shownCount.textContent = commentLoaded.length;
+
+  if (commentLoaded.length === commentsList.length) {
+    commentLoaderButton.classList.add('hidden');
+  }
 };
 
 const onLoadMoreComments = (commentsList) => {
@@ -42,6 +46,7 @@ const onLoadMoreComments = (commentsList) => {
 
 miniature.forEach((element) => { // задание цикла для списка миниатюр
   element.addEventListener('click',(evt) =>{ //добавление события на контретный элемент в списке
+    document.querySelector('body').classList.add('modal-open');
     const clickedItemId = Number(evt.target.closest('.picture').dataset.id);
     const currentItem = similarPictures.find((item) => item.id === clickedItemId);
     renderComments(currentItem.comments);
@@ -57,9 +62,17 @@ miniature.forEach((element) => { // задание цикла для списк�
   });
 });
 
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    bigPicture.classList.add('hidden');
+    document.querySelector('body').classList.remove('modal-open');
+  }
+});
+
 buttonClose.addEventListener('click', () => {
   bigPicture.classList.add('hidden');
   commentsCounter = COMMENTS_STEP;
   commentLoaderButton.classList.remove('hidden');
+  document.querySelector('body').classList.remove('modal-open');
 });
 
