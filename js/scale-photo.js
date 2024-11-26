@@ -1,7 +1,7 @@
 const scaleValueControlSmaller = document.querySelector('.scale__control--smaller');
 const scaleValueControlBigger = document.querySelector('.scale__control--bigger');
 const scaleValueControl = document.querySelector('.scale__control--value');
-const imgUploadPreview = document.querySelector('.img-upload__preview > img');
+export const imgUploadPreview = document.querySelector('.img-upload__preview > img');
 
 const scaleValues = {
   MIN_VALUE: 25,

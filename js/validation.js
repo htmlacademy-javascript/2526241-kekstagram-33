@@ -1,4 +1,11 @@
-document.querySelector('.img-upload__overlay').classList.remove('hidden');
+import { resetFilter } from './photo-filters.js';
+
+const imageUploadButton = document.querySelector('.img-upload__label');
+imageUploadButton.addEventListener('click',(evt) => {
+  evt.preventDefault();
+  resetFilter();
+  document.querySelector('.img-upload__overlay').classList.remove('hidden');
+});
 
 const HASHTAG_MAX_LENGTH = 19;
 const HASHTAG_MAX_QUANT = 5;
