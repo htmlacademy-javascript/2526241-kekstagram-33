@@ -29,13 +29,13 @@ const parseHashtags = (inputValue) =>
     .split(' ') //разделение хэштегов по пробелам
     .filter(Boolean); //наличие какого-либо значения
 
-const checkHashtag = () => {
-  const hashtags = parseHashtags(hashtagInputElement.value);
+const checkHashtag = (text) => {
+  const hashtags = parseHashtags(text);
   return hashtags.every((hashtag) =>HASHTAG_SYMBOLS.test(hashtag));
 };
 
-const checkHashtagMaxQuant = () => {
-  const hashtags = parseHashtags(hashtagInputElement.value);
+const checkHashtagMaxQuant = (text) => {
+  const hashtags = parseHashtags(text);
   return checkLength(hashtags,HASHTAG_MAX_QUANT);
 };
 
@@ -44,12 +44,12 @@ const checkRepeats = (array) => {
   return uniqueItems.size === array.length; //проверка количества полученных хэштегов и длины исходного массива, при несовпадении, возвращает false
 };
 
-const checkHashtagRepeats = () => {
-  const hashtags = parseHashtags(hashtagInputElement.value);
+const checkHashtagRepeats = (text) => {
+  const hashtags = parseHashtags(text);
   return checkRepeats(hashtags);
 };
 
-const checkCommentMaxLength = () => checkLength(commentInputElement.value, COMMENT_MAX_LENGTH);
+const checkCommentMaxLength = (text) => checkLength(text, COMMENT_MAX_LENGTH);
 
 const validation = () => {
   validator.addValidator(hashtagInputElement, checkHashtag, SHOWN_MESSAGES.hashtagRule);
@@ -61,11 +61,6 @@ const validation = () => {
 validation();
 
 uploadFormElement.addEventListener('submit', (event) => {
-  const isValid = validator.validate();
-  if (!isValid) {
-    event.preventDefault();
-    // console.log('Форма невалидна');
-  } else {
-    // console.log('Можно отправлять');
-  }
+  event.preventDefault();
+  validator.validate();
 });
