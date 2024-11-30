@@ -1,5 +1,5 @@
-import { similarPictures } from './data.js';
 import { createSocialComment } from './create-social-comment.js';
+import { renderPhotos } from './creating-miniature.js';
 
 const COMMENTS_STEP = 5;
 const miniature = document.querySelectorAll('.picture');
@@ -43,12 +43,11 @@ const onLoadMoreComments = (commentsList) => {
   renderComments(commentsList);
 };
 
-
 miniature.forEach((element) => { // задание цикла для списка миниатюр
   element.addEventListener('click',(evt) =>{ //добавление события на контретный элемент в списке
     document.querySelector('body').classList.add('modal-open');
     const clickedItemId = Number(evt.target.closest('.picture').dataset.id);
-    const currentItem = similarPictures.find((item) => item.id === clickedItemId);
+    const currentItem = photos.find((item) => item.id === clickedItemId);
     renderComments(currentItem.comments);
     bigPicture.classList.remove('hidden');
     const currentPhoto = evt.currentTarget.querySelector('.picture__img');//наложение evt.target конкретно на картинку из миниатюры
