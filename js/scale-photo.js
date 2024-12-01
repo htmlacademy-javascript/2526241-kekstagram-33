@@ -3,13 +3,13 @@ const scaleValueControlBigger = document.querySelector('.scale__control--bigger'
 const scaleValueControl = document.querySelector('.scale__control--value');
 export const imgUploadPreview = document.querySelector('.img-upload__preview > img');
 
-const scaleValues = {
+export const scaleValues = {
   MIN_VALUE: 25,
   MAX_VALUE: 100,
   STEP: 25
 };
 
-const updateImageScale = (scale) => {
+export const updateImageScale = (scale) => {
   scaleValueControl.value = `${scale}%`;
   imgUploadPreview.style.transform = `scale(${scale / 100})`;
 };

@@ -1,10 +1,9 @@
-const pictureContainer = document.querySelector('.pictures'); // Поиск контейнера для изображений пользователей
-const similarPictureTemplate = document.querySelector('#picture').content.querySelector('.picture'); //Поиск шаблона для копирования
-const similarPictureFragment = document.createDocumentFragment(); //заведение контейнера для вставки картинок
-
+const pictureContainer = document.querySelector('.pictures');
+const similarPictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const similarPictureFragment = document.createDocumentFragment();
 
 const renderPhotos = (photos) => {
-  photos.forEach(({id,url,description,likes,comments}) => {
+  photos.forEach(({ id, url, description, likes, comments }) => {
     const pictureElement = similarPictureTemplate.cloneNode(true);
     pictureElement.dataset.id = id;
     pictureElement.querySelector('.picture__img').src = url;
@@ -16,4 +15,4 @@ const renderPhotos = (photos) => {
   pictureContainer.appendChild(similarPictureFragment);
 };
 
-export {renderPhotos};
+export { renderPhotos };

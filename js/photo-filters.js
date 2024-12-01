@@ -4,6 +4,8 @@ const sliderField = document.querySelector('.effect-level');
 const sliderElement = document.querySelector('.effect-level__slider');
 const sliderValue = document.querySelector('.effect-level__value');
 const effectChange = document.querySelectorAll('.effects__radio');
+export const effectLevel = document.querySelector('.img-upload__effect-level');
+export const original = document.querySelector('#effect-none');
 
 const effects = [ //задание параметров эффектов
   { filter: 'none' },
