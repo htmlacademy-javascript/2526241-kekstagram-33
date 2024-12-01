@@ -1,4 +1,9 @@
 import { resetFilter } from './photo-filters.js';
+import { sendData } from './server.js';
+import { openSuccefulMessage } from './modal-settings.js';
+import { resetSettings } from './reset-settings.js';
+
+const uploadButton = document.querySelector('.img-upload__submit');
 
 const imageUploadButton = document.querySelector('.img-upload__label');
 imageUploadButton.addEventListener('click',(evt) => {
@@ -18,11 +23,11 @@ const SHOWN_MESSAGES = {
   maxLengthComment: `Максимальная длина комментария ${COMMENT_MAX_LENGTH} символов`
 };
 
-const uploadFormElement = document.querySelector('#upload-select-image');
+export const uploadFormElement = document.querySelector('#upload-select-image');
 const hashtagInputElement = uploadFormElement.querySelector('[name = "hashtags"]');
 const commentInputElement = uploadFormElement.querySelector('[name="description"]');
 
-const validator = new Pristine (uploadFormElement, {
+export const validator = new Pristine (uploadFormElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error'
@@ -67,7 +72,14 @@ const validation = () => {
 
 validation();
 
-uploadFormElement.addEventListener('submit', (event) => {
-  event.preventDefault();
-  validator.validate();
+uploadFormElement.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const isValid = validator.validate();
+
+  if (isValid) {
+    uploadButton.disabled = true;
+    sendData(new FormData(evt.target));
+    openSuccefulMessage();
+    resetSettings();
+  }
 });
