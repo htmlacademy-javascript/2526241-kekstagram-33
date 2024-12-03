@@ -75,16 +75,21 @@ function onEscClose (evt) {
   }
 }
 
-// Установка событий на миниатюры
+// Установка событий на миниатюры и делегирование
 export const setupMiniatures = (photos) => {
-  const miniature = document.querySelectorAll('.picture');
-  miniature.forEach((element) => {
-    element.addEventListener('click', () => {
-      const clickedItemId = Number(element.dataset.id);
+  const container = document.querySelector('.pictures');
+
+
+  container.addEventListener('click', (evt) => {
+    const picture = evt.target.closest('.picture');
+    if (picture) {
+      const clickedItemId = Number(picture.dataset.id);
       const photo = photos.find((item) => item.id === clickedItemId);
-      openBigPicture(photo);
-      document.addEventListener('keydown', onEscClose);
-    });
+      if (photo) {
+        openBigPicture(photo);
+        document.addEventListener('keydown', onEscClose);
+      }
+    }
   });
 
   buttonClose.addEventListener('click', closeBigPicture);
