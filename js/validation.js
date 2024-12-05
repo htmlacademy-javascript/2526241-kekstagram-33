@@ -6,8 +6,7 @@ import { resetSettings } from './reset-settings.js';
 const uploadButton = document.querySelector('.img-upload__submit');
 
 const imageUploadButton = document.querySelector('.img-upload__label');
-imageUploadButton.addEventListener('click',(evt) => {
-  evt.preventDefault();
+imageUploadButton.addEventListener('click',() => {
   resetFilter();
   document.querySelector('.img-upload__overlay').classList.remove('hidden');
 });

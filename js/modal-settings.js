@@ -1,3 +1,6 @@
+import { resetFilter } from './photo-filters';
+import { resetSettings } from './reset-settings';
+
 const imgUploadPreviwButtonClose = document.querySelector('.img-upload__cancel');
 
 export const openSuccefulMessage = () => {
@@ -18,6 +21,9 @@ export const openSuccefulMessage = () => {
   const closeSuccessMessage = () => {
     successMessage.remove();
     document.removeEventListener('keydown', onEscClose); // Удаляем обработчик
+    resetFilter();
+    resetSettings();
+    document.querySelector('.img-upload__overlay').classList.add('hidden');
   };
 
   // Закрытие сообщения по клику на кноку закрытия
